@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { UserdataService } from "./userdata.service";
-import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
+import { MatTableDataSource, MatSort, MatPaginator, MatDialogRef, MatDialog } from "@angular/material";
 import { Router } from '@angular/router';
+import { UserMoreDetailsComponent } from './user-more-details/user-more-details.component';
 
 @Component({
   selector: "app-userdisplay",
@@ -15,7 +16,7 @@ export class UserdisplayComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private _data: UserdataService,private _router:Router) {
+  constructor(private _data: UserdataService,private _router:Router,public _dailog:MatDialog) {
   }
   ngOnInit() {
     this._data.getAllUser().subscribe((data: user[]) => {
@@ -45,7 +46,9 @@ export class UserdisplayComponent implements OnInit {
     this._router.navigate(["/edituser", item.uid]);
   }
   OnViewMoreClick(item:user){
-this._router.navigate(['viewmore']);
+    this._dailog.open(UserMoreDetailsComponent,{
+      data:item
+    });
   }
 
   applyFilter(filterValue: string) {

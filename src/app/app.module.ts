@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UserdisplayComponent } from "./userdisplay/userdisplay.component";
-import { MatTableModule, MatInputModule } from "@angular/material";
+import { MatTableModule, MatInputModule, MatDialogRef, MatDialogModule } from "@angular/material";
 import { UsermenuComponent } from "./usermenu/usermenu.component";
 import { LayoutModule } from "@angular/cdk/layout";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -33,9 +33,15 @@ import { UserdeleteComponent } from './userdisplay/userdelete/userdelete.compone
     MatIconModule,
     MatListModule,
     HttpClientModule,rouingarr,
-    MatPaginatorModule,MatInputModule
+    MatPaginatorModule,MatInputModule,
+    //MatDialogRef,
+    MatDialogModule
   ],
   providers: [],
+  //add dailog componet should be added here
+  entryComponents:[
+    UserMoreDetailsComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
